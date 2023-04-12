@@ -76,7 +76,7 @@ stages:
                 ConnectionType: 'AzureRM'
                 azureSubscription: 'azure'
                 appType: 'webApp'
-                WebAppName: 'eshoponWebYAML3620169'
+                WebAppName: 'eshoponWebYAML3620169-dev'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
 
 - stage: Deploy_To_Test
@@ -135,7 +135,7 @@ stages:
         inputs:
           azureSubscription: 'azure'
           Action: 'Stop Azure App Service'
-          WebAppName: 'eshoponWebYAML3620169'
+          WebAppName: 'eshoponWebYAML3620169-test'
           ResourceGroupName: 'az400m05l11-RG'
           Slot: 'production'
 
