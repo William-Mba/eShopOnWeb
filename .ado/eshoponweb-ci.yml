@@ -57,7 +57,7 @@ stages:
 - stage: Deploy
   displayName: Deploy to Azure Web App
   jobs:
-    - deployment: Deploy to Development
+    - deployment: DeployToDevelopment
       environment: development
       pool:
         vmImage: 'windows-2019'
@@ -78,7 +78,7 @@ stages:
                 appType: 'webApp'
                 WebAppName: 'eshoponWebYAML3620169'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
-    - deployment: Deploy to Test
+    - deployment: DeployToTest
       environment: test
       pool:
         vmImage: 'windows-2019'
@@ -99,7 +99,7 @@ stages:
                 appType: 'webApp'
                 WebAppName: 'eshoponWebYAML3620169'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
-    - deployment: Deploy to Pre-production
+    - deployment: DeployToPre-production
       environment: pre-production
       pool:
         vmImage: 'windows-2019'
@@ -120,7 +120,7 @@ stages:
                 appType: 'webApp'
                 WebAppName: 'eshoponWebYAML3620169'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
-    - deployment: Deploy to Production
+    - deployment: DeployToProduction
       environment: production
       pool:
         vmImage: 'windows-2019'
