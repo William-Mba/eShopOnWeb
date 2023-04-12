@@ -101,7 +101,7 @@ stages:
                 ConnectionType: 'AzureRM'
                 azureSubscription: 'azure'
                 appType: 'webApp'
-                WebAppName: 'eshoponWebYAML3620169'
+                WebAppName: 'eshoponWebYAML3620169-test'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
 
 - stage: Deploy_To_Preprod
@@ -126,7 +126,7 @@ stages:
                 ConnectionType: 'AzureRM'
                 azureSubscription: 'azure'
                 appType: 'webApp'
-                WebAppName: 'eshoponWebYAML3620169'
+                WebAppName: 'eshoponWebYAML3620169-pp'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
 
 - stage: Deploy_To_Prod
@@ -151,5 +151,5 @@ stages:
                 ConnectionType: 'AzureRM'
                 azureSubscription: 'azure'
                 appType: 'webApp'
-                WebAppName: 'eshoponWebYAML3620169'
+                WebAppName: 'eshoponWebYAML3620169-prod'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
