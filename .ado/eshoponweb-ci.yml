@@ -55,9 +55,9 @@ stages:
         publishLocation: 'Container'
 
 - stage: Deploy
-  displayName: Deploy to Azure Web App
+  displayName: Deploy to Development
   jobs:
-    - deployment: DeployToDevelopment
+    - deployment: Deploy
       environment: development
       pool:
         vmImage: 'windows-2019'
@@ -78,7 +78,11 @@ stages:
                 appType: 'webApp'
                 WebAppName: 'eshoponWebYAML3620169'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
-    - deployment: DeployToTest
+
+- stage: Deploy
+  displayName: Deploy to Test
+  jobs:
+    - deployment: Deploy
       environment: test
       pool:
         vmImage: 'windows-2019'
@@ -99,7 +103,11 @@ stages:
                 appType: 'webApp'
                 WebAppName: 'eshoponWebYAML3620169'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
-    - deployment: DeployToPreproduction
+
+- stage: Deploy
+  displayName: Deploy to Pre-production 
+  jobs:
+    - deployment: Deploy
       environment: pre-production
       pool:
         vmImage: 'windows-2019'
@@ -120,14 +128,18 @@ stages:
                 appType: 'webApp'
                 WebAppName: 'eshoponWebYAML3620169'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
-    - deployment: DeployToProduction
+                
+- stage: Deploy
+  displayName: Deploy to Production
+  jobs:
+    - deployment: Deploy
       environment: production
       pool:
         vmImage: 'windows-2019'
       strategy:
-       canary:
-         deploy:
-           steps:
+        runOnce:
+          deploy:
+            steps:
             - task: DownloadBuildArtifacts@1
               inputs:
                 buildType: 'current'
