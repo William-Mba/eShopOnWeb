@@ -58,6 +58,7 @@ stages:
   displayName: Deploy to an Azure Web App
   jobs:
     - job: Deploy
+      environment: approvals
       pool:
         vmImage: 'windows-2019'
       steps:
