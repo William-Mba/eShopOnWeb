@@ -99,7 +99,7 @@ stages:
                 appType: 'webApp'
                 WebAppName: 'eshoponWebYAML3620169'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
-    - deployment: DeployToPre-production
+    - deployment: DeployToPreproduction
       environment: pre-production
       pool:
         vmImage: 'windows-2019'
