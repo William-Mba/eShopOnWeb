@@ -54,7 +54,7 @@ stages:
         ArtifactName: 'Bicep'
         publishLocation: 'Container'
 
-- stage: Deploy
+- stage: Deploy_To_Dev
   displayName: Deploy to Development
   jobs:
     - deployment: Deploy
@@ -79,7 +79,7 @@ stages:
                 WebAppName: 'eshoponWebYAML3620169'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
 
-- stage: Deploy
+- stage: Deploy_To_Test
   displayName: Deploy to Test
   jobs:
     - deployment: Deploy
@@ -104,7 +104,7 @@ stages:
                 WebAppName: 'eshoponWebYAML3620169'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
 
-- stage: Deploy
+- stage: Deploy_To_Preprod
   displayName: Deploy to Pre-production 
   jobs:
     - deployment: Deploy
@@ -128,8 +128,8 @@ stages:
                 appType: 'webApp'
                 WebAppName: 'eshoponWebYAML3620169'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
-                
-- stage: Deploy
+
+- stage: Deploy_To_Prod
   displayName: Deploy to Production
   jobs:
     - deployment: Deploy
