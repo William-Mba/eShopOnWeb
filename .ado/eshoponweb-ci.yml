@@ -107,16 +107,6 @@ stages:
 - stage: Deploy_To_Preprod
   displayName: Deploy to Pre-production 
   jobs:
-    - job: 
-      steps:
-      - task: AzureAppServiceManage@0
-        displayName: 'Delete Test Environement'
-        inputs:
-          azureSubscription: 'azure'
-          Action: 'Delete Slot'
-          WebAppName: 'eshoponWebYAML3620169'
-          ResourceGroupName: 'az400m05l11-RG'
-          Slot: 'production'
     - deployment: Deploy
       environment: pre-production
       pool:
@@ -138,6 +128,16 @@ stages:
                 appType: 'webApp'
                 WebAppName: 'eshoponWebYAML3620169-pp'
                 packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
+    - job: 
+      displayName: 'Stop Test Environement'
+      steps:
+      - task: AzureAppServiceManage@0
+        inputs:
+          azureSubscription: 'azure'
+          Action: 'Stop Azure App Service'
+          WebAppName: 'eshoponWebYAML3620169'
+          ResourceGroupName: 'az400m05l11-RG'
+          Slot: 'production'
 
 - stage: Deploy_To_Prod
   displayName: Deploy to Production
